@@ -10,3 +10,9 @@ WHERE YEAR(`date_of_birth`) = 1990;
 SELECT * FROM db_university.courses
 WHERE `cfu` >10
 ````
+
+### Selezionare tutti gli studenti che hanno più di 30 anni
+````SQL
+SELECT * FROM db_university.students
+WHERE 2024 - YEAR (`date_of_birth`) >= 30
+````
