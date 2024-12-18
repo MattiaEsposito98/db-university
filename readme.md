@@ -56,12 +56,13 @@ VALUES (12, 'Mattia', 'Esposito', '1998-01-31', 'spsmtt98a31f839j', '2021-09-01'
 
 ### 10. Cambiare il numero dell’ufficio del professor Pietro Rizzo in 126
 ````SQL
-
-
+UPDATE db_university.teachers
+SET office_number = 126 
+WHERE name = 'Pietro' AND surname = 'Rizzo'	
 ````
 
 ### 11. Eliminare dalla tabella studenti il record creato precedentemente al punto 9
 ````SQL
-
-
+delete from db_university.students
+where name= 'Mattia' AND surname = 'Esposito' 
 ````
