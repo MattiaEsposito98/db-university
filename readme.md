@@ -27,9 +27,9 @@ WHERE `period` = 'I semestre' AND `year` = 1
 ````SQL
 SELECT * 
 FROM db_university.exams
-WHERE date = '2021-06-20' 
-AND TIME(hour) > '14:00';
-````
+WHERE date = '2020-06-20' 
+AND TIME(hour) >= '14:00:00';
+````  
 
 ### 6. Selezionare tutti i corsi di laurea magistrale (38)
 ````SQL
