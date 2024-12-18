@@ -36,14 +36,16 @@ AND TIME(hour) > '14:00';
 SELECT * FROM db_university.degrees
 WHERE `name` LIKE 'Corso di Laurea Magistrale %' 
 ````
+
 ### 7. Da quanti dipartimenti è composta l'università? (12)
 ````SQL
-
-
+SELECT COUNT(*) AS `total_departments` FROM db_university.departments
 ````
+
 ### 8. Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
 ````SQL
-
+SELECT COUNT(*) AS `teachers_without_number` FROM db_university.teachers
+WHERE `phone` IS NOT NULL
 
 ````
 ### 9. Inserire nella tabella degli studenti un nuovo record con i propri dati (per il campo degree_id, inserire un valore casuale)
