@@ -46,18 +46,20 @@ SELECT COUNT(*) AS `total_departments` FROM db_university.departments
 ````SQL
 SELECT COUNT(*) AS `teachers_without_number` FROM db_university.teachers
 WHERE `phone` IS NOT NULL
-
 ````
+
 ### 9. Inserire nella tabella degli studenti un nuovo record con i propri dati (per il campo degree_id, inserire un valore casuale)
 ````SQL
-
-
+INSERT INTO db_university.students (degree_id, name, surname, date_of_birth, fiscal_code, enrolment_date, registration_number, email) 
+VALUES (12, 'Mattia', 'Esposito', '1998-01-31', 'spsmtt98a31f839j', '2021-09-01', 1234556, 'esposito.matty@hotmail.it');
 ````
+
 ### 10. Cambiare il numero dell’ufficio del professor Pietro Rizzo in 126
 ````SQL
 
 
 ````
+
 ### 11. Eliminare dalla tabella studenti il record creato precedentemente al punto 9
 ````SQL
 
