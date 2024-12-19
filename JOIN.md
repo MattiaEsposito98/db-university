@@ -6,47 +6,73 @@ FROM
 JOIN
 	degrees
 ON
-	degrees.id = courses.degree_id
+  degrees.id = courses.degree_id
 WHERE
-	degrees.name= 'Corso di Laurea in Economia'
+  degrees.name= 'Corso di Laurea in Economia'
 ````
 
 ### 2. Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze
 ````SQL
 SELECT 
-    degrees.`name` AS degree_name,
-    departments.`name` AS department_name
+  degrees.`name` AS degree_name,
+  departments.`name` AS department_name
 FROM 
-    degrees	
+  degrees	
 JOIN 
-    departments 
+  departments 
 ON 
-    degrees.department_id = departments.id
+  degrees.department_id = departments.id
 WHERE 
-    departments.`name` = 'Dipartimento di Neuroscienze' 
-    AND degrees.`level` = 'Magistrale';
+  departments.`name` = 'Dipartimento di Neuroscienze'    AND degrees.`level` = 'Magistrale';
 ````
 
 ### 3.  Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
 ````SQL
 SELECT 
-    courses.`name` AS course_name
+  courses.`name` AS course_name
 FROM
-    courses
+  courses
 JOIN
-    course_teacher ON course_teacher.course_id = courses.id
+  course_teacher ON course_teacher.course_id = courses.id
 JOIN
-    teachers ON course_teacher.teacher_id = teachers.id
+  teachers ON course_teacher.teacher_id = teachers.id
 WHERE
-    teachers.id = 44;
+  teachers.id = 44;
 ````
 
 ### 4. Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome
 ````SQL
+SELECT 
+  s.id AS student_id,
+  s.name,
+  s.surname,
+  d.name AS degree_name,
+  dep.name AS department_name
+FROM 
+  students AS s
+JOIN 
+  degrees AS d ON s.degree_id = d.id
+JOIN 
+  departments AS dep ON d.department_id = dep.id
+ORDER BY 
+  s.surname ASC,
+	s.name ASC;
 ````
 
 ### 5. Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
 ````SQL
+SELECT 
+	degrees.name AS degrees_name, courses.name AS courses_name, teachers.name, teachers.surname 
+FROM 
+	degrees
+JOIN 	
+	course_teacher ON degrees.id = course_teacher.course_id
+JOIN 
+	courses ON course_teacher.course_id = courses.id
+JOIN 
+	teachers ON course_teacher.teacher_id = teachers.id
+
+
 ````
 
 ### 6. Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
