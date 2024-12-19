@@ -1,48 +1,68 @@
-### Contare quanti iscritti ci sono stati ogni anno
+### 1. Contare quanti iscritti ci sono stati ogni anno
 ```` SQL
 SELECT 
-    YEAR(enrolment_date) AS anno,
-    COUNT(*) AS numero_iscritti
+  YEAR(enrolment_date) AS anno,
+  COUNT(*) AS numero_iscritti
 FROM 
-    `students`
+  `students`
 GROUP BY 
-    YEAR(enrolment_date)
+  YEAR(enrolment_date)
 ORDER BY 
-    anno;
+  anno;
 ````
 
-### Contare gli insegnanti che hanno l'ufficio nello stesso edificio
+### 2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
 ```` SQL
 SELECT 
-    office_address,
-    COUNT(*) AS stesso_ufficio
+  office_address,
+  COUNT(*) AS stesso_ufficio
 FROM 
-    db_university.teachers
+  db_university.teachers
 GROUP BY 
-    office_address
+  office_address
 ORDER BY 
-    stesso_ufficio DESC;
+  stesso_ufficio DESC;
 ````
 
-### Calcolare la media dei voti di ogni appello d'esame
+### 3. Calcolare la media dei voti di ogni appello d'esame
 ```` SQL
 SELECT 
-    e.`date` AS data_esame,
-    AVG(e_s.`vote`) AS media_voti
+  e.`date` AS data_esame,
+  AVG(e_s.`vote`) AS media_voti
 FROM 
-    `exams` AS e
+  `exams` AS e
 JOIN 
-    `exam_student` AS e_s 
+  `exam_student` AS e_s 
 ON 
-    e.`id` = e_s.`exam_id`
+  e.`id` = e_s.`exam_id`
 GROUP BY 
-    e.`date`
+  e.`date`
 ORDER BY 
-    media_voti DESC;
+  media_voti DESC;
+````
+### 3b. Calcolare la media dei voti di ogni appello
+```` SQL
+SELECT 
+  exam_id,
+  AVG(vote) AS avg_vote
+FROM
+  db_university.exam_student
+GROUP BY
+  exam_id
+ORDER BY 
+  avg_vote DESC;
 ````
 
-### Contare quanti corsi di laurea ci sono per ogni dipartimento
+### 4. Contare quanti corsi di laurea ci sono per ogni dipartimento
 ```` SQL
-
+SELECT 
+	department_id,
+  COUNT(*) AS number_department 
+FROM 
+	db_university.degree
+GROUP BY
+	department_id
+ORDER BY
+	department_id ASC
 ````
 
