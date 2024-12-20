@@ -26,31 +26,9 @@ ORDER BY
 
 ### 3. Calcolare la media dei voti di ogni appello d'esame
 ```` SQL
-SELECT 
-  e.`date` AS data_esame,
-  AVG(e_s.`vote`) AS media_voti
-FROM 
-  `exams` AS e
-JOIN 
-  `exam_student` AS e_s 
-ON 
-  e.`id` = e_s.`exam_id`
-GROUP BY 
-  e.`date`
-ORDER BY 
-  media_voti DESC;
-````
-### 3b. Calcolare la media dei voti di ogni appello
-```` SQL
-SELECT 
-  exam_id,
-  AVG(vote) AS avg_vote
-FROM
-  db_university.exam_student
-GROUP BY
-  exam_id
-ORDER BY 
-  avg_vote DESC;
+SELECT AVG(`vote`) AS `avg`, `exam_id`
+FROM `exam_student`
+GROUP BY `exam_id`
 ````
 
 ### 4. Contare quanti corsi di laurea ci sono per ogni dipartimento
